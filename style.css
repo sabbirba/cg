@@ -1,0 +1,446 @@
+/* BRACU CGPA Calculator - Clean & Optimized */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-display: swap;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #24273a;
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #cad3f5;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #cad3f5;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f5bde6, #8bd5ca, #8aadf4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+/* Simple Calculator Button */
+.simple-calculator-btn {
+    background: linear-gradient(135deg, #7dc4e4, #91d7e3);
+    color: #1e2030;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(125, 196, 228, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.simple-calculator-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(125, 196, 228, 0.4);
+}
+
+/* Main calculator card */
+.calculator-card {
+    background: #1e2030;
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    border: 1px solid #363a4f;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calculator-container {
+    margin-bottom: 3rem;
+}
+
+/* Input sections */
+.input-section {
+    background: #181926;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #363a4f;
+}
+
+.input-section h2 {
+    color: #8aadf4;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #b8c0e0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #5b6078;
+    border-radius: 12px;
+    background: #181926;
+    color: #cad3f5;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #8aadf4;
+    background: #1e2030;
+}
+
+.form-group input:hover {
+    border-color: #6e738d;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Buttons */
+.generate-btn, .calculate-btn {
+    background: linear-gradient(135deg, #8aadf4, #c6a0f6);
+    color: #1e2030;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(138, 173, 244, 0.3);
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.generate-btn:hover, .calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(138, 173, 244, 0.4);
+}
+
+/* Course rows */
+.course-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #1e2030;
+    border: 1px solid #363a4f;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.course-row:hover {
+    transform: translateY(-2px);
+}
+
+.course-row label {
+    color: #8aadf4;
+    font-weight: 600;
+    margin: 0;
+    min-width: 120px;
+}
+
+.course-row input,
+.course-row select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #5b6078;
+    border-radius: 8px;
+    background: #181926;
+    color: #cad3f5;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.course-row input:focus,
+.course-row select:focus {
+    outline: none;
+    border-color: #8aadf4;
+    background: #1e2030;
+}
+
+.course-row select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cad3f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+/* Loading section */
+.loading-section {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #181926;
+    border-radius: 12px;
+    border: 1px solid #363a4f;
+}
+
+.loading-content {
+    display: inline-flex;
+    align-items: center;
+    color: #cad3f5;
+    font-weight: 600;
+    gap: 0.75rem;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #5b6078;
+    border-top: 3px solid #8aadf4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Result section */
+.result-section {
+    background: linear-gradient(135deg, #a6da95, #94e2d5);
+    color: #1e2030;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    box-shadow: 0 8px 25px rgba(166, 218, 149, 0.3);
+}
+
+/* Error message */
+.error-message {
+    background: rgba(237, 135, 150, 0.1);
+    border: 1px solid rgba(237, 135, 150, 0.3);
+    color: #ed8796;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+/* How to Use Section */
+.how-to-use-card {
+    background: #1e2030;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #363a4f;
+    margin-top: 2rem;
+}
+
+.how-to-use-card h2 {
+    color: #f5bde6;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #181926;
+    border: 1px solid #363a4f;
+    border-radius: 12px;
+}
+
+.step-number {
+    background: linear-gradient(135deg, #f5bde6, #c6a0f6);
+    color: #1e2030;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.step-content p {
+    margin: 0;
+    color: #b8c0e0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.step-content a {
+    color: #7dc4e4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.step-content a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .calculator-card {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+        margin: 0 auto 2rem auto;
+    }
+    
+    .input-section {
+        padding: 1.5rem;
+    }
+    
+    .course-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .course-row input,
+    .course-row select {
+        width: 100%;
+    }
+    
+    .course-row label {
+        min-width: auto;
+        text-align: center;
+    }
+    
+    .step {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .step-number {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .step-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .calculator-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .input-section {
+        padding: 1rem;
+    }
+    
+    .generate-btn, .calculate-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #8aadf4;
+    outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(138, 173, 244, 0.3);
+    color: #cad3f5;
+}
