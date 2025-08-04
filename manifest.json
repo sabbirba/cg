@@ -3,7 +3,7 @@
   "short_name": "CG",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#24273a",
+  "background_color": "#232323",
   "theme_color": "#24273a",
   "description": "A simple CG calculator for BRACU Students.",
   "icons": [
