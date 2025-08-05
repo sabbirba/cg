@@ -38,5 +38,4 @@ This project is set up for deployment to GitHub Pages using the workflow in [`.g
 MIT License
 
 ---
-
-Made for
+By Sabbir Bin Abbas
